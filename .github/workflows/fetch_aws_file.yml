@@ -1,0 +1,30 @@
+name:  fetchs a file
+run-name: Fetchs a file 
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        type: choice
+        description: "System to run the script on"
+        options:
+          - qa
+          - playground
+          - staging
+          - production
+      resume_from_path:
+        default: ''
+        required: false
+        type: string
+        description: "CSV path in s3 to resume from"
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: ${{ github.event.inputs.env }}
+    env:
+
+    steps:
+      - name: list a file
+        run: ls -la
