@@ -12,7 +12,7 @@ on:
           - playground
           - staging
           - production
-      resume_from_path:
+      csv_path_in_s3:
         default: ''
         required: false
         type: string
@@ -22,8 +22,6 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    environment: ${{ github.event.inputs.env }}
-    env:
 
     steps:
       - name: list a file
