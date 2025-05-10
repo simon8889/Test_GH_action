@@ -22,7 +22,10 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-
+    
     steps:
-      - name: list a file
-        run: ls -la
+      - name: Print environment
+        run: echo "Running on env: ${{ github.event.inputs.env }}"
+
+      - name: Print CSV path
+        run: echo "CSV path: ${{ github.event.inputs.csv_path_in_s3 }}"
