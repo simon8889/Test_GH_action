@@ -27,7 +27,7 @@ jobs:
 
     steps:
       - name: Print environment
-        run: echo "Running on env: ${{ github.event.inputs.env }}"
+        run: echo "Running on env ${{ github.event.inputs.env }}"
 
       - name: Print CSV path
-        run: echo "CSV path: ${{ github.event.inputs.csv_path_in_s3 }}"
+        run: echo "CSV path ${{ github.event.inputs.csv_path_in_s3 }}"
