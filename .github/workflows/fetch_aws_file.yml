@@ -1,28 +1,30 @@
-name:  fetchs a file
-run-name: Fetchs a file 
+name: Fetch a file
+run-name: Fetch a file
 
 on:
   workflow_dispatch:
     inputs:
       env:
-        type: choice
         description: "System to run the script on"
+        required: true
+        type: choice
         options:
           - qa
           - playground
           - staging
           - production
+
       csv_path_in_s3:
-        default: ''
-        required: false
-        type: string
         description: "CSV path in s3 to resume from"
+        required: false
+        default: ''
+        type: string
 
 jobs:
-  deployment:
+  run-script:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    
+
     steps:
       - name: Print environment
         run: echo "Running on env: ${{ github.event.inputs.env }}"
